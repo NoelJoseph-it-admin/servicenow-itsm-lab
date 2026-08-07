@@ -7,7 +7,7 @@ I am currently learning ServiceNow and IT Service Management (ITSM).
 ### 1. User Account Creation
 - Created user accounts in ServiceNow.
 - Practised basic user administration.
-- 
+  
 
 ### 2. System Statistics
 - Used `stats.do` to explore ServiceNow system information.
