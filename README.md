@@ -2,7 +2,7 @@
 
 I am currently learning ServiceNow and IT Service Management (ITSM).
 
-## Completed Activities - **Lab 01, Part A: Lists, filters and the condition builder**
+### **Lab 01, Part A: Lists, filters and the condition builder**
 
 ### 1. User Account Creation
 - Created user accounts in ServiceNow.
@@ -78,7 +78,23 @@ password.
 
 ---
 
+### **Lab 01, Part D: Module map + Service Operations Workspace**
+
+Distinguished the SOW *view* (a column layout applied to the classic incident list)
+from the SOW *workspace* (`/now/sow/home`) — a separate tabbed agent interface with
+no application navigator or breadcrumb.
+
+Viewed the workspace as admin first (all widgets empty — the admin account has no
+assigned incidents and belongs to no assignment groups), then impersonated an agent
+with a live queue: 5 incidents in progress, 1 breached SLA, 2 unassigned.
+
+**Takeaway:** the workspace surfaces a breached SLA in two places simultaneously —
+the SLA tile and the Upcoming panel. Escalation prompts are designed to be hard to
+miss. For queue work the workspace beats the classic list because the caller's
+history sits beside the record instead of two clicks away.
+
+**Evidence:** <img width="916" height="497" alt="evidence lab-01-04 Service Operation Workspace" src="https://github.com/user-attachments/assets/9b040d8d-bf57-49c2-8b7d-54541ccb8f33" />
+
 ### Next up
 
-- [ ] Lab 01 Part D — module map + Service Operations Workspace
 - [ ] Lab 02 — Incident Management (the core 90 minutes)
