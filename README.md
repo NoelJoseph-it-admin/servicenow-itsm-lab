@@ -1,88 +1,115 @@
-# ServiceNow ITSM Lab
+# ServiceNow Service Desk Lab — 7 Hour Practical Path
 
-I am currently learning ServiceNow and IT Service Management (ITSM).
+Hands-on ServiceNow ITSM lab work completed in a free Personal Developer Instance (PDI), documented for Service Desk Analyst / IT Support roles.
 
-### **Lab 01, Part A: Lists, filters and the condition builder**
-
-### 1. Conditional Builder
-- Practised creating conditions.
-- Explored fields, operators, and values.
-- Learned how conditional logic works in ServiceNow.
-- <img width="916" height="499" alt="evidence lab-01-02 conditional builder" src="https://github.com/user-attachments/assets/1d6860fb-fc1f-4eee-8e7f-ea9646121983" />
-
-## Skills
-
-- ServiceNow
-- ITSM
-- User Administration
-- Conditional Builder
-- System Administration
-
-### **Lab 01, Part B: Forms, related lists, audit history**
-
-- Explored the four zones of the incident form: header/UI actions, fields,
-  activity stream, related lists
-- Used the reference field preview (ⓘ) to open a caller record without leaving the form
-- Configured form layout to surface an additional field
-- Copied a record sys_id and confirmed it is the true identifier, with INC number as label
-- Reviewed the audit history to see field-level changes with user and timestamp
-
-**Takeaway:** ServiceNow audits every field change, so "who reassigned this ticket
-and when" is always answerable from the record itself.
+**Author:** Noel Joseph · Auckland, New Zealand
+**Platform release used:** _(record yours — see Setup)_
+**Instance:** `devXXXXXX.service-now.com` (personal developer instance)
 
 ---
 
-### **Lab 01, Part C: Users, groups, roles, impersonation**
+## Why this repo exists
 
-Built and validated role-based access control end to end.
+Most entry-level service desk job ads in New Zealand list ServiceNow as a required or preferred tool. This repo is proof of hands-on capability: every lab below was performed in a live ServiceNow instance, with screenshots and record numbers as evidence.
 
-**Users created:**
-| User ID | Name | Roles |
-|---|---|---|
-| `noel.analyst` | Noel Analyst | `itil` (inherited via group) |
-| `tina.enduser` | Tina Enduser | none — end user |
-
-**Group created:** `Service Desk – Auckland`
-- Members: `noel.analyst`
-- Roles: `itil`
-
-**Validation via impersonation:**
-- Impersonated `tina.enduser` → no incident queue visible, restricted self-service view only
-- Impersonated `noel.analyst` → full incident queue visible
-
-This confirmed the access model: roles are granted to groups, users inherit roles
-through group membership, and effective permissions are the sum of all roles from
-all groups a user belongs to.
-
-**Evidence:** <img width="914" height="502" alt="evidence lab-01-03 enduser_view" src="https://github.com/user-attachments/assets/69a308df-9386-4370-adea-9c5c709cf2ae" />
-<img width="916" height="502" alt="evidence lab-01-03 itil_view" src="https://github.com/user-attachments/assets/47d4cd48-7218-42cd-bc8b-766cab458935" />
-
-
-
-**Takeaway:** when a new starter reports "I can't see any tickets," the first two
-checks are whether they hold the `itil` role and whether they are in the correct
-assignment group. Impersonation diagnoses this in seconds without needing their
-password.
+The scope is deliberately narrow. It covers the ~20% of ServiceNow that generates ~80% of a Tier 1/Tier 2 analyst's daily work: **working incidents, fulfilling requests, using knowledge, raising changes, and reading the CMDB.** It does not cover scripting, integrations, or implementation work — those belong to a CSA/developer path, not a service desk path.
 
 ---
 
-### **Lab 01, Part D: Module map + Service Operations Workspace**
+## The 7-hour timetable
 
-Distinguished the SOW *view* (a column layout applied to the classic incident list)
-from the SOW *workspace* (`/now/sow/home`) - a separate tabbed agent interface with
-no application navigator or breadcrumb.
+Do it in one Saturday, or split across three evenings. Timings assume you type the steps rather than read them.
 
-Viewed the workspace as admin first (all widgets empty - the admin account has no
-assigned incidents and belongs to no assignment groups), then impersonated an agent
-with a live queue: 5 incidents in progress, 1 breached SLA, 2 unassigned.
+| Block | Time | Topic | File |
+|---|---|---|---|
+| 0 | 0:00 – 0:25 | Developer account, PDI request, first login | [00-SETUP.md](00-SETUP.md) |
+| 1 | 0:25 – 1:30 | Platform navigation, users, groups, roles, impersonation | [labs/LAB-01-navigation-and-admin-basics.md](labs/LAB-01-navigation-and-admin-basics.md) |
+| 2 | 1:30 – 3:00 | **Incident Management** — full lifecycle, the core skill | [labs/LAB-02-incident-management.md](labs/LAB-02-incident-management.md) |
+| 3 | 3:00 – 4:00 | Service Catalog, REQ / RITM / SCTASK, approvals | [labs/LAB-03-service-catalog-and-requests.md](labs/LAB-03-service-catalog-and-requests.md) |
+| 4 | 4:00 – 4:35 | Knowledge Management, KCS basics | [labs/LAB-04-knowledge-management.md](labs/LAB-04-knowledge-management.md) |
+| 5 | 4:35 – 5:20 | Change Management + Problem Management | [labs/LAB-05-change-and-problem.md](labs/LAB-05-change-and-problem.md) |
+| 6 | 5:20 – 6:20 | CMDB, SLAs, reports, dashboards | [labs/LAB-06-cmdb-sla-and-reporting.md](labs/LAB-06-cmdb-sla-and-reporting.md) |
+| 7 | 6:20 – 7:00 | Write-up, push to GitHub, interview drill | [notes/INTERVIEW-PREP.md](notes/INTERVIEW-PREP.md) |
 
-**Takeaway:** the workspace surfaces a breached SLA in two places simultaneously -
-the SLA tile and the Upcoming panel. Escalation prompts are designed to be hard to
-miss. For queue work the workspace beats the classic list because the caller's
-history sits beside the record instead of two clicks away.
+**Block 2 is the one that matters most.** If you run short on time, never cut it. A hiring manager will ask you to talk through an incident lifecycle; they will not ask you to configure a dashboard.
 
-**Evidence:** <img width="916" height="497" alt="evidence lab-01-04 Service Operation Workspace" src="https://github.com/user-attachments/assets/9b040d8d-bf57-49c2-8b7d-54541ccb8f33" />
+---
 
-### Next up
+## Repo structure
 
-- [ ] Lab 02 — Incident Management
+```
+ServiceNow-ServiceDesk-Lab/
+├── README.md                  ← you are here
+├── 00-SETUP.md                ← account + PDI, plus fallbacks if the waitlist bites
+├── labs/
+│   ├── LAB-01-navigation-and-admin-basics.md
+│   ├── LAB-02-incident-management.md
+│   ├── LAB-03-service-catalog-and-requests.md
+│   ├── LAB-04-knowledge-management.md
+│   ├── LAB-05-change-and-problem.md
+│   └── LAB-06-cmdb-sla-and-reporting.md
+├── notes/
+│   ├── GLOSSARY.md            ← tables, prefixes, states, jargon
+│   ├── INTERVIEW-PREP.md      ← 25 questions with answers, plus CV bullets
+│   └── RESOURCES.md           ← every official link, ranked
+└── evidence/                  ← your screenshots go here
+```
+
+---
+
+## How to use each lab file
+
+Every lab follows the same pattern:
+
+1. **Concept** — 5 lines on what the module is for and why the business cares.
+2. **Steps** — numbered clicks. Navigation is written as `All → Incident → Create New`.
+3. **Record it** — what to screenshot and what number to log.
+4. **Interview angle** — the question a hiring manager actually asks about this module.
+
+Fill in the `Result:` lines as you go. Those filled-in numbers are what make the repo look like real work rather than a copied tutorial.
+
+---
+
+## Publishing this to GitHub
+
+```bash
+cd ServiceNow-ServiceDesk-Lab
+git init
+git add .
+git commit -m "ServiceNow service desk lab: 7-hour ITSM hands-on path"
+git branch -M main
+git remote add origin https://github.com/NoelJoseph-it-admin/ServiceNow-ServiceDesk-Lab.git
+git push -u origin main
+```
+
+Create the empty repo on GitHub first (no README, no .gitignore — this repo already has one).
+
+**Commit as you go, not all at the end.** One commit per lab block gives you a contribution graph that shows a real study session:
+
+```bash
+git add labs/LAB-02-incident-management.md evidence/
+git commit -m "Lab 02: incident lifecycle end to end, INC0010045-0010052"
+git push
+```
+
+---
+
+## Screenshot discipline
+
+Redact nothing except your instance URL if you'd rather not share it. Name files so they sort:
+
+```
+evidence/lab02-01-incident-form-new.png
+evidence/lab02-02-priority-matrix.png
+evidence/lab02-03-resolved-with-close-notes.png
+```
+
+Aim for 12–20 screenshots total across all labs. That is enough to be credible and few enough to actually take.
+
+---
+
+## What this does not make you
+
+Completing this does not make you a ServiceNow administrator, and you should not claim to be one. It makes you a person who can walk into a service desk on day one and work a queue without hand-holding. On a CV, that is the line: *"Hands-on ServiceNow ITSM experience across incident, request, knowledge and change workflows in a personal developer instance."*
+
+The natural next steps after this are ITIL 4 Foundation (the vocabulary employers assume you have) and, if you want to go deeper, the ServiceNow Certified System Administrator path. Both are covered in [notes/RESOURCES.md](notes/RESOURCES.md).
