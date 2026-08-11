@@ -97,4 +97,4 @@ history sits beside the record instead of two clicks away.
 
 ### Next up
 
-- [ ] Lab 02 — Incident Management (the core 90 minutes)
+- [ ] Lab 02 — Incident Management
